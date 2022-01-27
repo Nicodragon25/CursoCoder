@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
-  Direction: {x: 0, y: 0, z: 0}
+  Direction: {x: 1, y: 0, z: 0}
   Dmg: 25

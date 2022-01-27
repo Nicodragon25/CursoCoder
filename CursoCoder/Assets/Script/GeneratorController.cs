@@ -6,6 +6,8 @@ public class GeneratorController : MonoBehaviour
 {
     public GameObject SpawnedObject;
 
+    public float spawnDelay;
+    public float spawnRate;
     void Start()
     {
     }
@@ -19,8 +21,8 @@ public class GeneratorController : MonoBehaviour
         }
         if (Input.GetKeyDown("j"))
         {
-            Spawn(new Vector3(0,20,0));
-            Spawn(new Vector3(0,-20,0));
+            Spawn(new Vector3(0, 20, 0));
+            Spawn(new Vector3(0, -20, 0));
         }
         if (Input.GetKeyDown("k"))
         {
