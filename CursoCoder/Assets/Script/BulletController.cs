@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    GeneratorController generator;
     public float bulletSpeed;
     public Vector3 Direction;
     public float Dmg;
