@@ -11,25 +11,27 @@ public class Player : MonoBehaviour
     void Start()
     {
         transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
-
-
-        TakeDamage(40);
-        Healing(15);
-        Debug.Log(hp);
-        Debug.Assert(playerDirection.x <= 1, "Por favor, elegir la/las direcciones colocando \"1\" en el eje que desee mover al personaje");
-        Debug.Assert(playerDirection.y <= 1, "Por favor, elegir la/las direcciones colocando \"1\" en el eje que desee mover al personaje");
-        Debug.Assert(playerDirection.z <= 1, "Por favor, elegir la/las direcciones colocando \"1\" en el eje que desee mover al personaje");
     }
 
     void Update()
     {
 
-        /* if (Input.GetKey("w"))
+         if (Input.GetKey("w"))
          {
              PlayerMovement(Vector3.forward);
          }
-        */
-        PlayerMovement(playerDirection);
+        if (Input.GetKey("s"))
+        {
+            PlayerMovement(Vector3.back);
+        }
+        if (Input.GetKey("a"))
+        {
+            PlayerMovement(Vector3.left);
+        }
+        if (Input.GetKey("d"))
+        {
+            PlayerMovement(Vector3.right);
+        }
     }
 
 
