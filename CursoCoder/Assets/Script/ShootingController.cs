@@ -16,7 +16,7 @@ public class ShootingController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot(player.transform.localRotation.eulerAngles + new Vector3(0, 90, 0));
+            Shoot(player.transform.localRotation.eulerAngles);
         }
     }
 

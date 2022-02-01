@@ -14,7 +14,7 @@ public class ArrowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * -arrowSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * arrowSpeed * Time.deltaTime);
     }
 
 }
