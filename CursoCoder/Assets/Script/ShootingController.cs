@@ -6,6 +6,10 @@ public class ShootingController : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public GameObject player;
+
+    bool canShoot = true;
+    public float shootingCoolDown;
+    float timePass;
     void Start()
     {
         
@@ -14,9 +18,19 @@ public class ShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0) && canShoot == true)
         {
             Shoot(player.transform.localRotation.eulerAngles);
+            canShoot = false;
+        }
+        if (!canShoot)
+        {
+            timePass += Time.deltaTime;
+        }
+        if (timePass >= shootingCoolDown)
+        {
+            canShoot = true;
+            timePass = 0;
         }
     }
 

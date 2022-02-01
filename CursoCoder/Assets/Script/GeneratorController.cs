@@ -6,34 +6,49 @@ public class GeneratorController : MonoBehaviour
 {
     public GameObject SpawnedObject;
 
-    void Start()
-    {
-    }
+    public bool canShoot = true;
+    public float shootingCD;
+    public float timePass;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
             Spawn(new Vector3(0, 0, 0));
+            canShoot = false;
         }
-        if (Input.GetKeyDown("j"))
+        if (Input.GetKeyDown("j") && canShoot)
         {
             Spawn(new Vector3(0,20,0));
             Spawn(new Vector3(0,-20,0));
+            canShoot = false;
+
         }
-        if (Input.GetKeyDown("k"))
+        if (Input.GetKeyDown("k") && canShoot)
         {
             Spawn(new Vector3(0, 20, 0));
             Spawn(new Vector3(0, 0, 0));
             Spawn(new Vector3(0, -20, 0));
+            canShoot = false;
+
         }
-        if (Input.GetKeyDown("l"))
+        if (Input.GetKeyDown("l") && canShoot)
         {
             Spawn(new Vector3(0, 20, 0));
             Spawn(new Vector3(0, 10, 0));
             Spawn(new Vector3(0, -10, 0));
             Spawn(new Vector3(0, -20, 0));
+            canShoot = false;
+
+        }
+        if (!canShoot)
+        {
+            timePass += Time.deltaTime;
+        }
+        if(timePass >= shootingCD)
+        {
+            canShoot = true;
+            timePass = 0;
         }
     }
 

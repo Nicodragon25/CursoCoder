@@ -111,3 +111,4 @@ MonoBehaviour:
   bulletSpeed: 10
   Direction: {x: 0, y: 0, z: 0}
   Dmg: 25
+  destroyTime: 4
