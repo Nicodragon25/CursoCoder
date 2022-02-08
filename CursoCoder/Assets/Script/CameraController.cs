@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
     bool isCamera1 = true;
 
     public GameObject[] cameras;
+
+    public GameObject playerOffset;
+    public GameObject player;
     void Start()
     {
         
@@ -31,7 +34,6 @@ public class CameraController : MonoBehaviour
             }
         }
     }
-
     void CameraSwitch(int cameraIndex, bool onOff)
     {
         cameras[cameraIndex].SetActive(onOff);
