@@ -44,8 +44,9 @@ public class EnemyController : MonoBehaviour
                 {
                     transform.Translate(Vector3.forward * speed * Time.deltaTime);
                 }
-
-                
+            break;
+            default:
+                Debug.Log("Error: no se seleccionó un tipo de enemigo válido");
             break;
         }
     }
