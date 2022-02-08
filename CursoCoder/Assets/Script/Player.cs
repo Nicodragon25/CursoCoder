@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public float hp;
     public Vector3 playerScale;
     public Vector3 playerDirection;
+
+    float mouseX;
     void Start()
     {
         transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour
         {
             PlayerMovement(Vector3.right);
         }
+
+        PlayerRotation();
     }
 
 
@@ -48,5 +52,12 @@ public class Player : MonoBehaviour
     void Healing(int healAmount)
     {
         hp = hp + healAmount;
+    }
+
+    void PlayerRotation()
+    {
+        mouseX += Input.GetAxis("Mouse X");
+
+        transform.rotation = Quaternion.Euler(0, mouseX,0);
     }
 }
