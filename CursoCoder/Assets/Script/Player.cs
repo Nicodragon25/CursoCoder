@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     public float hp;
     public Vector3 playerScale;
     public Vector3 playerDirection;
+    public int score = 0;
 
     float mouseX;
     void Start()
     {
         transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
+        score = GameManager.instance.score;
     }
 
     void Update()
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         }
 
         PlayerRotation();
+
+        GameManager.instance.playerScore = score;
     }
 
 

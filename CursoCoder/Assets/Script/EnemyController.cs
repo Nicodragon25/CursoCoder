@@ -5,17 +5,23 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject shootPoint;
     public float lerpSmoothness;
 
     public float speed;
+    public float startSpeed;
     public float h;
+    float rayDistance = 20f;
+    float secondRayDistance = 2f;
 
 
-    enum EnemyTypes {Enemigo1, Enemigo2};
+    RaycastHit hit;
+    enum EnemyTypes {Enemigo1, Enemigo2, Enemigo3};
     [SerializeField] EnemyTypes enemyType;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        startSpeed = speed;
     }
 
     // Update is called once per frame
@@ -38,16 +44,43 @@ public class EnemyController : MonoBehaviour
                 actualRotation = transform.rotation;
                 transform.rotation = Quaternion.Lerp(actualRotation, lookAt, lerpSmoothness);
 
-                // ahora usé la forma supongo esperada de medir distancias, por una cuestion de lo sencilla que es
-                // en comparacion al otro choclazo de codigo jajaja
-                if (Vector3.Distance(transform.position, player.transform.position) > 2)
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, secondRayDistance))
                 {
-                    transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                    speed = 0;
                 }
-            break;
+                if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, secondRayDistance))
+                {
+                    speed = startSpeed;
+                }
+
+                break;
+            case EnemyTypes.Enemigo3:
+                RayCasting();
+                break;
             default:
                 Debug.Log("Error: no se seleccionó un tipo de enemigo válido");
             break;
+        }
+    }
+
+    void RayCasting()
+    {
+        if (Physics.Raycast(shootPoint.transform.position, shootPoint.transform.TransformDirection(Vector3.forward), out hit, rayDistance))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                enemyType = EnemyTypes.Enemigo2;
+            }
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        if (enemyType == EnemyTypes.Enemigo3)
+        {
+            Gizmos.color = Color.white;
+            Vector3 direction = shootPoint.transform.TransformDirection(Vector3.forward) * rayDistance;
+            Gizmos.DrawRay(shootPoint.transform.position, direction);
         }
     }
 }
