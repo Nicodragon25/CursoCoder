@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GeneratorController : MonoBehaviour
 {
-    public GameObject SpawnedObject;
+    public GameObject[] SpawnedObjects;
 
     public bool canShoot = true;
     public float shootingCD;
     public float timePass;
-
+    bool normalBullet = true;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && canShoot)
@@ -50,10 +50,13 @@ public class GeneratorController : MonoBehaviour
             canShoot = true;
             timePass = 0;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) normalBullet = true;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) normalBullet = false;
     }
 
     private void Spawn(Vector3 Rotation)
     {
-        Instantiate(SpawnedObject, transform.position, transform.rotation = Quaternion.Euler(Rotation));
+        if(normalBullet) Instantiate(SpawnedObjects[0], transform.position, transform.rotation = Quaternion.Euler(Rotation));
+        if(!normalBullet) Instantiate(SpawnedObjects[1], transform.position, transform.rotation = Quaternion.Euler(Rotation));
     }
 }

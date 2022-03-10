@@ -16,8 +16,8 @@ public class EnemyController : MonoBehaviour
 
 
     RaycastHit hit;
-    enum EnemyTypes {Enemigo1, Enemigo2, Enemigo3};
-    [SerializeField] EnemyTypes enemyType;
+    public enum EnemyTypes {Enemigo1, Enemigo2, Enemigo3};
+    [SerializeField] public EnemyTypes enemyType;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
