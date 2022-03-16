@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2625467902209242215}
   - component: {fileID: 7722739829458396565}
   - component: {fileID: 2008159467795618165}
-  - component: {fileID: 8943808901364974740}
+  - component: {fileID: 1541457618914825934}
   m_Layer: 0
   m_Name: Strong Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8943808901364974740
+--- !u!114 &1541457618914825934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,16 +106,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517981114372435442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58dd0d9c2e45234484e29bffe673d53, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dfe220e379c57a4688f17109b770d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  shootPoint: {fileID: 1884962276353258310}
-  lerpSmoothness: 1
-  speed: 5
-  startSpeed: 0
-  h: 0
-  enemyType: 0
+  shootPoint: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: 5438ec0fcc3907842a880485977b2433, type: 2}
 --- !u!1 &1884962276353258310
 GameObject:
   m_ObjectHideFlags: 0

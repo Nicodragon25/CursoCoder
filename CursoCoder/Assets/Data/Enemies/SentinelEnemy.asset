@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c8ad3616c6d224eb019c19eeb86e5d, type: 3}
+  m_Name: SentinelEnemy
+  m_EditorClassIdentifier: 
+  speed: 4
+  hp: 60
+  rayDistance: 20
+  secondRayDistance: 2
+  lerpSmoothness: 2

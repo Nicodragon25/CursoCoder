@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
-    public float hp;
-    public Vector3 playerScale;
-    public Vector3 playerDirection;
-    public int score = 0;
+    [SerializeField] protected PlayerData playerStats;
 
+    float runtimeHp;
     float mouseX;
     void Start()
     {
-        transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
-        score = GameManager.instance.score;
+        playerStats.Score = GameManager.instance.score;
+        runtimeHp = playerStats.HP;
     }
 
     void Update()
@@ -39,23 +36,23 @@ public class Player : MonoBehaviour
 
         PlayerRotation();
 
-        GameManager.instance.playerScore = score;
+        GameManager.instance.playerScore = playerStats.Score;
     }
 
 
     void PlayerMovement(Vector3 direction)
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * playerStats.Speed * Time.deltaTime);
     }
 
     void TakeDamage(int damageTaken)
     {
-        hp = hp - damageTaken;
+        runtimeHp = runtimeHp - damageTaken;
     }
 
     void Healing(int healAmount)
     {
-        hp = hp + healAmount;
+        runtimeHp = runtimeHp + healAmount;
     }
 
     void PlayerRotation()

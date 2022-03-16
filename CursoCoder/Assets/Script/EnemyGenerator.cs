@@ -51,7 +51,6 @@ public class EnemyGenerator : MonoBehaviour
 
       
             enemy = Instantiate(enemies[randomEnemy], transform.position + offset, transform.rotation);
-            enemy.GetComponent<EnemyController>().enemyType = EnemyController.EnemyTypes.Enemigo2;
 
         if (enemies[randomEnemy].gameObject.name == "Strong Enemy")
         {
