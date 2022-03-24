@@ -17,10 +17,13 @@ public class EnemyGenerator : MonoBehaviour
     float timePass;
     public float spawnCoolDown;
     bool canSpawn;
+    bool canSpawnABSOLUTE;
 
     int enemiesCount;
-    void Start()
+    private void Awake()
     {
+        FindObjectOfType<Player>().OnPlayerDeath += PlayerDead;
+        canSpawnABSOLUTE = true;
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class EnemyGenerator : MonoBehaviour
         }
         if (timePass > spawnCoolDown) canSpawn = true;
 
-        if (canSpawn && enemies.Count > 0)
+        if (canSpawn && enemies.Count > 0 && canSpawnABSOLUTE)
         {
             Spawn();
             timePass = 0;
@@ -88,5 +91,13 @@ public class EnemyGenerator : MonoBehaviour
                 }
             }
         }
+    }
+    void PlayerDead()
+    {
+        canSpawnABSOLUTE = false;
+    }
+    public void DisableGenerator()
+    {
+        gameObject.SetActive(false);
     }
 }

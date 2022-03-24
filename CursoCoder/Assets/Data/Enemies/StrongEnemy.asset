@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: StrongEnemy
   m_EditorClassIdentifier: 
   speed: 2
-  hp: 100
+  dmg: 20
+  hp: 0
   rayDistance: 20
   secondRayDistance: 2
   lerpSmoothness: 2

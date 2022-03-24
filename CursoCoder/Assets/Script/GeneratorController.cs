@@ -14,7 +14,7 @@ public class GeneratorController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
-            Spawn(new Vector3(0, 0, 0));
+            Spawn(gameObject.transform.localRotation.eulerAngles);
             canShoot = false;
         }
         if (Input.GetKeyDown("j") && canShoot)

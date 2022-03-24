@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,12 +21,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
     }
-    private void Start()
-    {
-    }
-
     private void LateUpdate()
     {
         if (Input.GetKeyDown("o"))
@@ -38,5 +34,11 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+    }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }

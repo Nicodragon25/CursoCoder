@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c8ad3616c6d224eb019c19eeb86e5d, type: 3}
   m_Name: SentinelEnemy
   m_EditorClassIdentifier: 
-  speed: 4
-  hp: 60
+  speed: 0
+  dmg: 30
+  hp: 0
   rayDistance: 20
   secondRayDistance: 2
   lerpSmoothness: 2

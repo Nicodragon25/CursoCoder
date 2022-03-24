@@ -6,8 +6,11 @@ using TMPro;
 public class EnemyCount : MonoBehaviour
 {
     public TextMeshProUGUI enemyCountText;
+    int enemies;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+    }
     void Start()
     {
 
@@ -17,7 +20,6 @@ public class EnemyCount : MonoBehaviour
     void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
         enemyCountText.text = "Enemies : " + enemies.Length;
     }
 }

@@ -5,23 +5,23 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float bulletSpeed;
+    public Rigidbody rb;
     public Vector3 Direction;
-    public float Dmg;
+    public int Dmg;
     public float destroyTime;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb.AddForce(Vector3.forward * bulletSpeed * 5, ForceMode.Impulse);
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        transform.Translate(Vector3.right * bulletSpeed * Time.deltaTime);
-        Destroy(gameObject, destroyTime);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(collision.gameObject.tag != "Ground")
         {
-            transform.localScale = transform.localScale * 2;
+            Destroy(gameObject, 0.5f);
+            Debug.Log(collision.gameObject.name);
         }
     }
 }

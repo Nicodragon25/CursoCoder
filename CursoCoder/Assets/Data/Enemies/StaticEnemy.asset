@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: StaticEnemy
   m_EditorClassIdentifier: 
   speed: 0
-  hp: 15
+  dmg: 5
+  hp: 0
   rayDistance: 20
   secondRayDistance: 2
   lerpSmoothness: 2

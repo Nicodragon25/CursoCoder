@@ -7,9 +7,10 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     [SerializeField] private float speed;
-    public float Speed { get { return speed; }}
+    public float Speed { get { return speed; } set { speed = value; } }
 
-    public float hp;
+    public int dmg;
+    public int hp;
     public float rayDistance = 20f;
     public float secondRayDistance = 2f;
     public float lerpSmoothness;

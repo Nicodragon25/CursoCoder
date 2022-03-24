@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ChaserEnemy
   m_EditorClassIdentifier: 
   speed: 5
-  hp: 30
+  dmg: 10
+  hp: 0
   rayDistance: 20
   secondRayDistance: 2
   lerpSmoothness: 2

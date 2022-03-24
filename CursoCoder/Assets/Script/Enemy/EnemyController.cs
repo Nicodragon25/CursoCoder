@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
     public GameObject player;
     public GameObject shootPoint;
 
-    [SerializeField] protected EnemyData enemyStats;
-
+    [SerializeField] public EnemyData enemyStats;
     protected bool canMove;
     protected float startSpeed;
     protected RaycastHit hit;
+
+    float runtimeSpeed;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         shootPoint = transform.GetChild(0).gameObject;
+        FindObjectOfType<Player>().OnPlayerDeath += PlayerDead;
+    }
+    private void Start()
+    {
+        runtimeSpeed = enemyStats.Speed;
     }
     protected virtual void Update()
     {
@@ -43,12 +50,24 @@ public class EnemyController : MonoBehaviour
 
     protected void Move()
     {
-        if(canMove) transform.Translate(Vector3.forward * enemyStats.Speed * Time.deltaTime);
+        if(canMove) transform.Translate(Vector3.forward * runtimeSpeed * Time.deltaTime);
     }
     protected void LookPlayer()
     {
         Quaternion lookAt = Quaternion.LookRotation(player.transform.position - transform.position);
         Quaternion actualRotation = transform.rotation;
         transform.rotation = Quaternion.Lerp(actualRotation, lookAt, enemyStats.lerpSmoothness);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.name == "Player")
+        {
+            Destroy(gameObject, 0.5f);
+        }
+    }
+
+    public void PlayerDead()
+    {
+        runtimeSpeed = 0;
     }
 }
