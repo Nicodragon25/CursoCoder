@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject GlobalPP;
     GameObject player;
     public int playerScore;
     public int score;
@@ -41,4 +43,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
+    public void GlobalPpAddBloodEffect()
+    {
+        
+        if (GlobalPP.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().active == false)
+        {
+            GlobalPP.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().active = true;
+        }
+        else
+        {
+            GlobalPP.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().intensity.value += 0.1f;
+            GlobalPP.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().smoothness.value += 0.1f;
+        }
+    }
+
 }

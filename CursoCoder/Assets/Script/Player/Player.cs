@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     void TakeDamage(int damageTaken)
     {
         runtimeHp = runtimeHp - damageTaken;
-
+        GameManager.instance.GlobalPpAddBloodEffect();
         if (runtimeHp <= 0)
         {
             OnPlayerDeath?.Invoke();
