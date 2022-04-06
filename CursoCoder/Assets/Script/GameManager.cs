@@ -57,5 +57,4 @@ public class GameManager : MonoBehaviour
             GlobalPP.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>().smoothness.value += 0.1f;
         }
     }
-
 }
